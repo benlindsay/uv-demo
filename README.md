@@ -17,6 +17,11 @@ Variant to try out:
 * Outside of the `uv-demo` directory: `uv init --app demo-project`
     * Passing `demo-project` creates a new directory with that name to house the project files
     * Creates `main.py` instead of `src` directory and no build setup in `pyproject.toml`
+* Managed scripts:
+  * `uv init --script some_script.py`
+  * `uv add --script some_script.py polars`
+  * Copy content into script
+  * Run with `uv run --no-project some_script.py`
 
 ## 2. Start developing in a notebook
 
