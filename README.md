@@ -8,23 +8,24 @@ Ensure that `uv` is installed on your computer (check with `which uv` and `which
 
 ## 1. Repo Initialization
 
-1. `uv init --lib --python=3.12 demo-project`
-    * This creates `demo-project` folder with `src/demo_project`, `pyproject.toml`, `.python-version`, and `README.md` files with standards-compliant setup.
-2. `cd demo-project`, then `uv sync` to create virtual environment (`.venv`) and `uv.lock`
+1. `uv init --lib --python=3.12`
+    * This creates a `src/uv_demo` directory and `pyproject.toml`, `.python-version`, and `README.md` files with standards-compliant setup.
+2. `uv sync` to create virtual environment (`.venv`) and `uv.lock`
 
 Variant to try out:
 
-* `uv init --app demo-project`
+* Outside of the `uv-demo` directory: `uv init --app demo-project`
+    * Passing `demo-project` creates a new directory with that name to house the project files
     * Creates `main.py` instead of `src` directory and no build setup in `pyproject.toml`
 
 ## 2. Start developing in a notebook
 
-1. `cd demo-project`, add `notebooks` folder and create `01_start.ipynb` notebook
+1. Add `notebooks` folder and create `01_start.ipynb` notebook
 2. Note that `ipykernel` is required to run the notebook with the `.venv` environment. Install with `uv add --group dev ipykernel`, not the `Install` button on the popup if using VSCode.
     * Adds `ipykernel` to a `dev` dependency group in `pyproject.toml`
     * Updates `uv.lock`
     * Installs `ipykernel` to `.venv` using version in `uv.lock`
-3. `uv add plotly[express] httpx pandas`
+3. `uv add 'plotly[express]' httpx pandas`
     * Adds those dependencies to required dependencies in `pyproject.toml`
     * Updates `uv.lock`
     * Installs `plotly`, `httpx`, and `polars` using version from `uv.lock`
