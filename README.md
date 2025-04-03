@@ -39,7 +39,7 @@ Variant to try out:
 
 ## 3. Move functions to library
 
-1. Make `src/demo_project/data.py` and `src/demo_project/plots.py`
+1. Make `src/uv_demo/data.py` and `src/uv_demo/plots.py`
 2. Copy functions into them
 3. Add `02_use_lib.ipynb` file to `notebooks` and use functions from library to generate plot
 
@@ -59,10 +59,12 @@ Won't demo here but `uv build` and `uv publish` replace `poetry build` and `poet
 
 - `uv tool install textual-demo` is similar to `pipx install textual-demo`. Installs to `~/.local/bin/textual-demo`
 - `uvx textual-demo` downloads (or uses cache) and runs textual-demo without installing executable in `~/.local/bin`
-  - same as `uv tool install textual-demo`
+  - If you already have it `uv tool install`ed, `uvx` will use the same version already installed
 
 - Variant to try:
   - `uvx --with textual-demo textual-demo`
+  - Lets you specify packages to install in an ephemeral environment before running the command.
+  - Especially good for if the command doesn't match the name of the package
 
 ### Replacing venv and pip
 
