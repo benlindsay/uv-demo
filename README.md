@@ -22,6 +22,7 @@ Variant to try out:
   * `uv add --script some_script.py polars`
   * Copy content into script
   * Run with `uv run --no-project some_script.py`
+  * Can also lock dependencies with `uv lock --script some_script.py`
 
 ## 2. Start developing in a notebook
 
@@ -48,59 +49,36 @@ Variant to try out:
 3. Run `uv add streamlit --optional streamlit`
 4. Run `uv run streamlit run app.py`
 
-## Replacing poetry
+## 5. Build and Publish
 
-### Managing Dependencies
+Won't demo here but `uv build` and `uv publish` replace `poetry build` and `poetry publish`
 
-- uv init
-  - uv init --python=3.10
-  - uv init --app uv-demo-init-app
-  - uv init --lib uv-demo-init-lib
-    - Makes src/ directory for library content
-  - uv init --script my_script.py
-    - uv add polars --script my_script.py
-      - adds dependencies to commented config at top of script
-    - uv lock --script my_script.py
-      - creates my_script.py.lock file
-- uv run
-  - cd uv-demo-add-remove
-  - uv run main.py
-    - Installs project automatically before running the file, which
-      - Installs compliant python version if necessary
-      - Updates uv.lock if necessary
-      - Creates ./.venv if necessary
-      - Installs packages if necessary
-- uv add/remove
-  - Uncomment streamlit stuff in main.py
-  - `uv run main.py` fails because streamlit isn't added as dependency
-  - Run `uv add streamlit`. This adds streamlit to pyproject.toml, updates uv.lock, and installs new packages into `.venv`
-  - Now `uv run main.py` works
+## 6. Additional Capabilities
 
-### Building and Publishing Packages
-
-- uv build / uv publish
-
-### Managing Dev Env
-
-- uv sync
-- uv run
-
-## Replacing pipx
+### Replacing `pipx` with `uvx` and `uv tool`
 
 - `uv tool install textual-demo` is similar to `pipx install textual-demo`. Installs to `~/.local/bin/textual-demo`
 - `uvx textual-demo` downloads (or uses cache) and runs textual-demo without installing executable in `~/.local/bin`
-  - same as `uv tool install textual-demo
-  - uvx --with textual-demo textual-demo
+  - same as `uv tool install textual-demo`
 
-## Replacing venv and pip
+- Variant to try:
+  - `uvx --with textual-demo textual-demo`
 
-- uv venv
-  - uv venv --python=3.11
-- Then uv pip install
-  - Once there's a .venv directory, no need to activate it
+### Replacing venv and pip
 
-## Replacing pip-compile
+- `uv venv`
+- Then `uv pip install`
+  - Once there's a `.venv` directory, no need to activate it
+
+- Variant to try:
+  - `uv venv --python=3.11`
+
+### Replacing pip-compile
 
 - If just wanting to use pip-compile, use `uv pip compile` as a drop-in replacement that's way faster
-- uv pip compile requirements.in -o requirements.txt  
-- uv pip sync requirements.txt
+  - `uv pip compile pyproject.toml -o requirements.txt`
+- Then `uv pip sync requirements.txt`
+
+- Variant to try:
+  - If using a project with dependencies specified in `requirements.in` instead of `pyproject.toml`:
+  - `uv pip compile requirements.in -o requirements.txt`  
