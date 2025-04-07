@@ -6,7 +6,7 @@ This repo was set up for a live-demo to accompany a talk using these slides. Her
 
 Ensure that `uv` is installed on your computer (check with `which uv` and `which uvx` should both return valid paths). Ideally install with `curl -LsSf https://astral.sh/uv/install.sh | sh`. Otherwise use `brew install uv` or `pipx install uv`.
 
-Delete all files and folders in this repo except this `README.md` file before following the instructions below.
+Delete all files and folders in this repo except this `README.md` file and `.gitignore` before following the instructions below.
 
 ## 1. Repo Initialization
 
